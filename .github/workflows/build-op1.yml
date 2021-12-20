@@ -58,7 +58,9 @@ jobs:
     - name: 下载"${{matrix.target}}"源码
       working-directory: /workdir
       run: |
-        git clone https://github.com/immortalwrt/immortalwrt.git openwrt
+        git clone https://github.com/immortalwrt/immortalwrt.git
+        mkdir openwrt
+        cp -rf ./immortalwrt ./openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd $GITHUB_WORKSPACE/openwrt
         ./scripts/feeds update -a > /dev/null 2>&1
